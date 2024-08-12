@@ -11,25 +11,25 @@ MODE = "debug"
 TARGET_UPSTREAM = "https://registry-1.docker.io"
 
 [env.production]
-name = "cloudflare-docker-proxy"
-# routes = [
-#   { pattern = "docker.libcuda.so", custom_domain = true },
-#   { pattern = "quay.libcuda.so", custom_domain = true },
-#   { pattern = "gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s-gcr.libcuda.so", custom_domain = true },
-#   { pattern = "k8s.libcuda.so", custom_domain = true },
-#   { pattern = "ghcr.libcuda.so", custom_domain = true },
-#   { pattern = "cloudsmith.libcuda.so", custom_domain = true },
-# ]
+name = "docker-mirror"
+routes = [
+  { pattern = "docker.zebplay.com", custom_domain = true },
+  { pattern = "quay.zebplay.com", custom_domain = true },
+  { pattern = "gcr.zebplay.com", custom_domain = true },
+  { pattern = "k8s-gcr.zebplay.com", custom_domain = true },
+  { pattern = "k8s.zebplay.com", custom_domain = true },
+  { pattern = "ghcr.zebplay.com", custom_domain = true },
+  { pattern = "cloudsmith.zebplay.com", custom_domain = true },
+]
 
 [env.production.vars]
 MODE = "production"
 TARGET_UPSTREAM = ""
 
-[env.staging]
-name = "cloudflare-docker-proxy-staging"
-# route = { pattern = "docker-staging.libcuda.so", custom_domain = true }
+# [env.staging]
+# name = "cloudflare-docker-proxy-staging"
+# route = { pattern = "docker-staging.zebplay.com", custom_domain = true }
 
-[env.staging.vars]
-MODE = "staging"
-TARGET_UPSTREAM = ""
+# [env.staging.vars]
+# MODE = "staging"
+# TARGET_UPSTREAM = ""
