@@ -1,3 +1,5 @@
+import INDEX from './index.html'
+
 addEventListener("fetch", (event) => {
   event.passThroughOnException();
   event.respondWith(handleRequest(event.request));
@@ -32,6 +34,16 @@ function routeByHosts(host) {
 
 async function handleRequest(request) {
   const url = new URL(request.url);
+
+  if (url.pathname === "/") {
+    return new Response(INDEX, {
+      status: 200,
+      headers: {
+        "content-type": "text/html"
+      }
+    });
+  }
+
   const upstream = routeByHosts(url.hostname);
   if (upstream === "") {
     return new Response(
